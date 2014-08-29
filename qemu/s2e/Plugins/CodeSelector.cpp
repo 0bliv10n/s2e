@@ -203,8 +203,8 @@ void CodeSelector::opSelectProcess(S2EExecutionState *state)
     } else {
         m_pidsToTrack[state->getPid()] = true;
 
-        if (!m_privilegeTracking.connected()) {
-            m_privilegeTracking = s2e()->getCorePlugin()->onPageDirectoryChange.connect(
+        if (!m_addressSpaceTracking.connected()) {
+            m_addressSpaceTracking = s2e()->getCorePlugin()->onPageDirectoryChange.connect(
                     sigc::mem_fun(*this, &CodeSelector::onPageDirectoryChange));
         }
     }
